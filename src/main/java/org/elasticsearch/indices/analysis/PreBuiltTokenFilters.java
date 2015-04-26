@@ -166,6 +166,13 @@ public enum PreBuiltTokenFilters {
         }
     },
 
+    CAPITALIZATION(CachingStrategy.LUCENE) {
+        @Override
+        public TokenStream create(TokenStream tokenStream, Version version) {
+            return new CapitalizationFilter(tokenStream);
+        }
+    },
+
     KSTEM(CachingStrategy.ONE) {
         @Override
         public TokenStream create(TokenStream tokenStream, Version version) {
